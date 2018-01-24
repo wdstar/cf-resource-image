@@ -51,7 +51,7 @@ jobs:
         args:
         - -c
         - |
-          cf -v | awk '{ print $3 }' > cf-on-image/ver
+          cf -v | awk '{ print $3 }' | awk -F+ '{ print $1 }' > cf-on-image/ver
           cat cf-on-image/ver
   - put: docker-reg
     params:
